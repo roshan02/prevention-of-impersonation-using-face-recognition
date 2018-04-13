@@ -1,0 +1,19 @@
+<html>
+<head>
+
+  <title>Create New Task</title>
+
+</head>
+<body>
+  <form role="form" action="{% url 'timetable:index' "Monday"%}" method = "post" enctype = "multipart/form-data" >
+  {% csrf_token %}
+  {% for field in form %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Create a Task" />
+
+</body>
+</html>

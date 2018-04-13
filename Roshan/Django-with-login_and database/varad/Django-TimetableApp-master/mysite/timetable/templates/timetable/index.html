@@ -1,0 +1,98 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+    <title>Home</title>
+</head>
+<body class=" dashboard"
+  data-admin-utc-offset="0">
+  <!-- Container -->
+  <div id="container-fluid">
+
+
+      <!-- Header -->
+      <div id="header">
+          <div id="branding">
+
+  <h1 id="site-name"><a href="#">Timetable App</a></h1>
+
+          </div>
+</div>
+<br>
+
+{% for aday in adays%}
+
+    <a href = "{% url 'timetable:index' aday.name %}">{{ aday.name }} | </a>
+
+{% endfor %}
+<br>
+<br>
+<br>
+<div id="content-main">
+
+
+
+        <div class="app-auth module">
+        <table>
+        <caption>
+             <a class="section" title = "Represents the day of which the time tables of">{{ wday.name }}</a>
+        </caption>
+
+            <tr class="model-group">
+              {% if wday.DSA%}
+                <th scope="row"> Data Structurs and Algorithms </a></th>
+                <td><a href="#" class="#"></a></td>
+              {% endif %}
+            </tr>
+
+
+
+            <tr class="model-group">
+              {% if wday.DLD%}
+                <th scope="row"> Digital Logic Design </a></th>
+                <td><a href="#" class="#"></a></td>
+              {% endif %}
+            </tr>
+
+            <tr class="model-group">
+              {% if wday.DSGT%}
+                <th scope="row"> Discrete Sets and Graph Theory </a></th>
+              {% endif %}
+            </tr>
+
+            <tr class="model-group">
+              {% if wday.SLS%}
+                <th scope="row"> Science of Living Systems </a></th>
+              {% endif %}
+            </tr>
+
+            <tr class="model-group">
+              {% if wday.ODE%}
+                <th scope="row"> Ordianry Differential Equations </a></th>
+              {% endif %}
+            </tr>
+
+        </table>
+        </div>
+        <br>
+        <br>
+
+        <div class="app-auth module">
+        <table>
+        <caption>
+             <a class="section">To Do</a>
+             <div id="user-tools">
+              <td><a href = "{% url 'timetable:create_task' %}" class="addlink">Add</a></td>
+             </div>
+        </caption>
+        {%for ta in tasks%}
+        <tr class="model-group">
+            <th scope="row"> {{ ta.task}}</a></th>
+            <td><a href="#" class="#">{{ ta.last}}</a></td>
+        </tr>
+        {% endfor %}
+
+</div>
+</body>
+</html>
